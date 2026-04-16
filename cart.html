@@ -37,36 +37,16 @@
               <p class="eyebrow">Tu carrito</p>
               <h1>Productos seleccionados</h1>
             </div>
-            <p class="cart-count">2 artículos</p>
+            <p class="cart-count">0 artículos</p>
           </div>
 
-          <div class="cart-item">
-            <img src="zapatos/hombre/hombreRunning1.png" alt="Sprintflow" loading="lazy">
-            <div class="cart-item-details">
-              <h3>Sprintflow</h3>
-              <p class="product-category">Running</p>
-              <div class="quantity-selector">
-                <button>-</button>
-                <span>1</span>
-                <button>+</button>
-              </div>
-            </div>
-            <p class="cart-price">$145</p>
+          <div class="cart-empty">
+            <p class="empty-title">Tu carrito está vacío</p>
+            <p class="empty-text">Agrega tus zapatillas favoritas para comenzar tu compra.</p>
+            <a href="products.html" class="button button--primary">Ir a la tienda</a>
           </div>
 
-          <div class="cart-item">
-            <img src="zapatos/infantil/nina1.png" alt="Star Lite" loading="lazy">
-            <div class="cart-item-details">
-              <h3>Star Lite</h3>
-              <p class="product-category">Casual</p>
-              <div class="quantity-selector">
-                <button>-</button>
-                <span>1</span>
-                <button>+</button>
-              </div>
-            </div>
-            <p class="cart-price">$70</p>
-          </div>
+          <div class="cart-items" hidden></div>
         </div>
 
         <aside class="order-summary">
@@ -74,17 +54,17 @@
             <h2>Resumen del pedido</h2>
             <div class="summary-row">
               <span>Subtotal</span>
-              <span>$270</span>
+              <span class="summary-subtotal">$0</span>
             </div>
             <div class="summary-row">
               <span>Envío</span>
-              <span>$12</span>
+              <span class="summary-shipping">$0</span>
             </div>
             <div class="summary-row summary-total">
               <span>Total</span>
-              <span>$282</span>
+              <span class="summary-total-value">$0</span>
             </div>
-            <button class="button button--primary button--full">Pagar</button>
+            <button class="button button--primary button--full" disabled>Pagar</button>
             <p class="summary-note">Devoluciones gratis y pago seguro.</p>
           </div>
         </aside>

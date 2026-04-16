@@ -50,41 +50,61 @@
         <aside class="filters-panel">
           <div class="filter-card">
             <h3>Filtros</h3>
-            <div class="filter-group">
-              <h4>Categoría</h4>
-              <label><input type="checkbox"> Hombres</label>
-              <label><input type="checkbox"> Mujeres</label>
-              <label><input type="checkbox"> Niños</label>
+            <div class="filter-row">
+              <div class="filter-group">
+                <h4>Categoría</h4>
+                <label><input type="checkbox" name="filter-category" value="Hombres"> Hombres</label>
+                <label><input type="checkbox" name="filter-category" value="Mujeres"> Mujeres</label>
+                <label><input type="checkbox" name="filter-category" value="Niños"> Niños</label>
+              </div>
+              <div class="filter-group">
+                <h4>Enfoque</h4>
+                <label><input type="checkbox" name="filter-focus" value="Running"> Running</label>
+                <label><input type="checkbox" name="filter-focus" value="Trail"> Trail</label>
+                <label><input type="checkbox" name="filter-focus" value="Entrenamiento"> Entrenamiento</label>
+                <label><input type="checkbox" name="filter-focus" value="Casual"> Casual</label>
+              </div>
             </div>
             <div class="filter-group">
               <h4>Talla</h4>
               <div class="size-grid">
-                <button type="button">6</button>
-                <button type="button">7</button>
-                <button type="button">8</button>
-                <button type="button">9</button>
-                <button type="button">10</button>
-                <button type="button">11</button>
+                <button type="button">24</button>
+                <button type="button">25</button>
+                <button type="button">26</button>
+                <button type="button">27</button>
+                <button type="button">36</button>
+                <button type="button">37</button>
+                <button type="button">38</button>
+                <button type="button">39</button>
+                <button type="button">40</button>
+                <button type="button">41</button>
+                <button type="button">42</button>
+                <button type="button">43</button>
               </div>
             </div>
             <div class="filter-group">
               <h4>Precio</h4>
-              <input type="range" min="80" max="220" value="160">
-              <div class="range-labels"><span>$80</span><span>$220+</span></div>
+              <div class="price-inputs">
+                <div class="price-field">
+                  <label for="price-min">Mínimo</label>
+                  <input type="number" id="price-min" min="0" placeholder="80">
+                </div>
+                <div class="price-field">
+                  <label for="price-max">Máximo</label>
+                  <input type="number" id="price-max" min="0" placeholder="220">
+                </div>
+              </div>
             </div>
-            <div class="filter-group">
-              <h4>Enfoque</h4>
-              <label><input type="checkbox"> Running</label>
-              <label><input type="checkbox"> Trail</label>
-              <label><input type="checkbox"> Entrenamiento</label>
-              <label><input type="checkbox"> Casual</label>
+            <div class="filter-actions">
+              <button type="button" id="apply-filters" class="button button--primary">Aplicar</button>
+              <button type="button" id="clear-filters" class="button button--clear" disabled>Borrar</button>
             </div>
           </div>
         </aside>
 
         <section class="product-listing">
           <div class="product-grid product-grid--wide">
-            <a class="product-card product-card--list" href="productos/roadstride-casual.html">
+            <a class="product-card product-card--list" href="productos/roadstride-casual.html" data-category="Hombres" data-focus="Casual" data-price="120" data-sizes="37,38,40,41,42" data-stock="37:5,38:3,39:0,40:2,41:2,42:1">
               <img src="zapatos/hombre/hombreCasual1.jpg" alt="Roadstride Casual" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Casual</span>
@@ -93,7 +113,7 @@
                 <p class="price">$120</p>
               </div>
             </a>
-            <a class="product-card product-card--list" href="productos/sprintflow.html">
+            <a class="product-card product-card--list" href="productos/sprintflow.html" data-category="Hombres" data-focus="Running" data-price="145" data-sizes="37,38,40,41,42" data-stock="37:4,38:5,39:0,40:2,41:1,42:1">
               <img src="zapatos/hombre/hombreRunning1.png" alt="Sprintflow" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Running</span>
@@ -102,7 +122,7 @@
                 <p class="price">$145</p>
               </div>
             </a>
-            <a class="product-card product-card--list" href="productos/terragip-trail.html">
+            <a class="product-card product-card--list" href="productos/terragip-trail.html" data-category="Hombres" data-focus="Trail" data-price="138" data-sizes="38,39,40,41,42" data-stock="37:0,38:2,39:3,40:1,41:2,42:1">
               <img src="zapatos/hombre/hombreTrail1.png" alt="TerraGrip Trail" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Trail</span>
@@ -111,7 +131,7 @@
                 <p class="price">$138</p>
               </div>
             </a>
-            <a class="product-card product-card--list" href="productos/aurora-run.html">
+            <a class="product-card product-card--list" href="productos/aurora-run.html" data-category="Mujeres" data-focus="Running" data-price="150" data-sizes="36,38,39" data-stock="36:5,37:0,38:4,39:2">
               <img src="zapatos/mujer/mujerRunning1.png" alt="Aurora Run" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Running</span>
@@ -120,7 +140,7 @@
                 <p class="price">$150</p>
               </div>
             </a>
-            <a class="product-card product-card--list" href="productos/pulse-fit.html">
+            <a class="product-card product-card--list" href="productos/pulse-fit.html" data-category="Mujeres" data-focus="Entrenamiento" data-price="138" data-sizes="36,37,39" data-stock="36:4,37:5,38:0,39:2">
               <img src="zapatos/mujer/mujerEntrenamiento1.png" alt="Pulse Fit" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Entrenamiento</span>
@@ -129,7 +149,7 @@
                 <p class="price">$138</p>
               </div>
             </a>
-            <a class="product-card product-card--list" href="productos/nova-court.html">
+            <a class="product-card product-card--list" href="productos/nova-court.html" data-category="Mujeres" data-focus="Casual" data-price="125" data-sizes="36,38,39" data-stock="36:4,37:0,38:3,39:2">
               <img src="zapatos/mujer/mujerCasual2.png" alt="Nova Court" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Casual</span>
@@ -138,7 +158,7 @@
                 <p class="price">$125</p>
               </div>
             </a>
-            <a class="product-card product-card--list" href="productos/bloomstride.html">
+            <a class="product-card product-card--list" href="productos/bloomstride.html" data-category="Mujeres" data-focus="Casual" data-price="132" data-sizes="36,37,39" data-stock="36:5,37:3,38:0,39:2">
               <img src="zapatos/mujer/mujerCasual1.jpg" alt="Bloomstride" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Casual</span>
@@ -147,7 +167,7 @@
                 <p class="price">$132</p>
               </div>
             </a>
-            <a class="product-card product-card--list" href="productos/mini-sprint.html">
+            <a class="product-card product-card--list" href="productos/mini-sprint.html" data-category="Niños" data-focus="Running" data-price="68" data-sizes="24,25" data-stock="24:4,25:3,26:0,27:0">
               <img src="zapatos/infantil/nino1.jpg" alt="Mini Sprint" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Running</span>
@@ -156,7 +176,7 @@
                 <p class="price">$68</p>
               </div>
             </a>
-            <a class="product-card product-card--list" href="productos/tiny-trail.html">
+            <a class="product-card product-card--list" href="productos/tiny-trail.html" data-category="Niños" data-focus="Trail" data-price="75" data-sizes="24,26" data-stock="24:2,25:0,26:3,27:0">
               <img src="zapatos/infantil/nino2.png" alt="Tiny Trail" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Trail</span>
@@ -165,7 +185,7 @@
                 <p class="price">$75</p>
               </div>
             </a>
-            <a class="product-card product-card--list" href="productos/star-lite.html">
+            <a class="product-card product-card--list" href="productos/star-lite.html" data-category="Niños" data-focus="Casual" data-price="70" data-sizes="25,26" data-stock="24:0,25:2,26:1,27:0">
               <img src="zapatos/infantil/nina1.png" alt="Star Lite" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Casual</span>
@@ -174,7 +194,7 @@
                 <p class="price">$70</p>
               </div>
             </a>
-            <a class="product-card product-card--list" href="productos/pink-spark.html">
+            <a class="product-card product-card--list" href="productos/pink-spark.html" data-category="Niños" data-focus="Casual" data-price="72" data-sizes="24,27" data-stock="24:2,25:0,26:0,27:3">
               <img src="zapatos/infantil/nina2.png" alt="Pink Spark" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Casual</span>
@@ -183,7 +203,7 @@
                 <p class="price">$72</p>
               </div>
             </a>
-            <a class="product-card product-card--list" href="productos/unity-step.html">
+            <a class="product-card product-card--list" href="productos/unity-step.html" data-category="Unisex" data-focus="Casual" data-price="110" data-sizes="37,39,40" data-stock="36:0,37:2,38:0,39:4,40:1,41:0">
               <img src="zapatos/unisex/unisexCasual1.jpg" alt="Unity Step" loading="lazy">
               <div class="product-info">
                 <span class="product-category">Unisex</span>
@@ -214,5 +234,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
 
 
