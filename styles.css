@@ -542,12 +542,91 @@ p {
   border: 2px solid transparent;
   cursor: pointer;
 }
+.swatch.active,
+.size-selector button.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(31,184,255,0.18);
+}
 .swatch--active {
+  box-shadow: 0 0 0 3px rgba(31,184,255,0.18);
+}
+.swatch.active {
   box-shadow: 0 0 0 3px rgba(31,184,255,0.18);
 }
 .swatch:nth-child(1) { background: #1fb8ff; }
 .swatch:nth-child(2) { background: #111; }
 .swatch:nth-child(3) { background: #f8f8f8; }
+.floating-cart-button {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.32);
+  text-decoration: none;
+  z-index: 999;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.floating-cart-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 48px rgba(0, 0, 0, 0.38);
+}
+.floating-cart-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.floating-cart-badge {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--bg);
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.28);
+}
+.quantity-control {
+  display: grid;
+  gap: 0.75rem;
+}
+.quantity-control label {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.quantity-input {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.quantity-input input {
+  width: 72px;
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: var(--text);
+  text-align: center;
+}
+.quantity-input button {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
 .action-row {
   display: flex;
   flex-wrap: wrap;

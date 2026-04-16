@@ -332,6 +332,40 @@ const updateCartCountDisplay = () => {
   document.querySelectorAll('.cart-count').forEach((element) => {
     element.textContent = `${cartCount} artículo${cartCount === 1 ? '' : 's'}`;
   });
+  const floatingBadge = document.querySelector('.floating-cart-badge');
+  if (floatingBadge) {
+    if (cartCount > 0) {
+      floatingBadge.textContent = cartCount;
+      floatingBadge.style.display = 'grid';
+    } else {
+      floatingBadge.style.display = 'none';
+    }
+  }
+};
+
+const initFloatingCartButton = () => {
+  const currentPage = window.location.pathname.split('/').pop();
+  if (currentPage === 'cart.html') return;
+
+  const cartLink = currentPage && currentPage !== 'index.html' && window.location.pathname.includes('/productos/')
+    ? '../cart.html'
+    : 'cart.html';
+
+  const button = document.createElement('a');
+  button.href = cartLink;
+  button.className = 'floating-cart-button';
+  button.setAttribute('aria-label', 'Ver carrito');
+  button.innerHTML = `
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M6 6H4V4h2v2zm13.5 1.5l-1.5 9H8l-1-5H5.5V9h2.5l1 5h8l1.5-9h-1.5z" fill="currentColor" opacity="0.8"/>
+      <circle cx="9" cy="20" r="1.5" fill="currentColor"/>
+      <circle cx="17" cy="20" r="1.5" fill="currentColor"/>
+    </svg>
+    <span class="floating-cart-badge">0</span>
+  `;
+
+  document.body.appendChild(button);
+  updateCartCountDisplay();
 };
 
 const addToCart = (product) => {
@@ -354,25 +388,90 @@ const initProductPageCart = () => {
 
   if (!addButton) return;
 
+  const sizeButtons = document.querySelectorAll('.size-selector button');
+  const colorButtons = document.querySelectorAll('.color-swatchs .swatch');
+  const quantityInput = document.querySelector('#product-quantity');
+  const decreaseButton = document.querySelector('.quantity-decrease');
+  const increaseButton = document.querySelector('.quantity-increase');
+
+  const updateAddButton = () => {
+    const selectedSize = document.querySelector('.size-selector button.active');
+    const selectedColor = document.querySelector('.color-swatchs .swatch.active');
+    const quantity = quantityInput ? Number(quantityInput.value) : 0;
+    addButton.disabled = !(selectedSize && selectedColor && quantity > 0);
+  };
+
+  sizeButtons.forEach((button) => {
+    button.classList.remove('active');
+    button.addEventListener('click', () => {
+      sizeButtons.forEach((btn) => btn.classList.remove('active'));
+      button.classList.add('active');
+      updateAddButton();
+    });
+  });
+
+  colorButtons.forEach((button) => {
+    button.classList.remove('active');
+    button.addEventListener('click', () => {
+      colorButtons.forEach((btn) => btn.classList.remove('active'));
+      button.classList.add('active');
+      updateAddButton();
+    });
+  });
+
+  if (quantityInput) {
+    quantityInput.value = '1';
+    quantityInput.addEventListener('input', () => {
+      if (quantityInput.value.trim() === '' || Number(quantityInput.value) < 1) {
+        quantityInput.value = '1';
+      }
+      updateAddButton();
+    });
+  }
+
+  if (decreaseButton && quantityInput) {
+    decreaseButton.addEventListener('click', () => {
+      const current = Number(quantityInput.value) || 1;
+      quantityInput.value = current > 1 ? current - 1 : 1;
+      updateAddButton();
+    });
+  }
+
+  if (increaseButton && quantityInput) {
+    increaseButton.addEventListener('click', () => {
+      const current = Number(quantityInput.value) || 1;
+      quantityInput.value = current + 1;
+      updateAddButton();
+    });
+  }
+
+  updateAddButton();
+
   addButton.addEventListener('click', () => {
     const title = document.querySelector('h1')?.textContent.trim() || 'Producto';
     const priceText = document.querySelector('.product-price')?.textContent.replace(/\$/g, '').trim() || '0';
     const price = Number(priceText) || 0;
     const image = document.querySelector('.main-image img')?.src || '';
     const category = document.querySelector('.eyebrow')?.textContent.trim() || '';
-    const sizeButton = Array.from(document.querySelectorAll('.size-selector button'))
-      .find((button) => button.classList.contains('active'));
+    const sizeButton = document.querySelector('.size-selector button.active');
+    const colorButton = document.querySelector('.color-swatchs .swatch.active');
     const size = sizeButton ? sizeButton.textContent.trim() : '';
-    const productId = `${title}-${size || 'default'}`;
+    const color = colorButton ? colorButton.getAttribute('aria-label') || '' : '';
+    const quantity = quantityInput ? Number(quantityInput.value) || 1 : 1;
 
-    addToCart({ id: productId, title, price, image, category, size });
+    if (!size || !color) {
+      return;
+    }
+
+    const productId = `${title}-${size}-${color}`;
+    addToCart({ id: productId, title, price, image, category, size, color, quantity });
 
     const originalText = addButton.textContent;
-    addButton.textContent = 'Añadido';
+    addButton.textContent = '¡Añadido!';
     addButton.disabled = true;
     setTimeout(() => {
       addButton.textContent = originalText;
-      addButton.disabled = false;
+      updateAddButton();
     }, 1200);
   });
 };
@@ -417,7 +516,7 @@ const renderCartPage = () => {
       <img src="${item.image}" alt="${item.title}" loading="lazy">
       <div class="cart-item-details">
         <h3>${item.title}</h3>
-        <p class="product-category">${item.category}${item.size ? ` • Talla ${item.size}` : ''}</p>
+        <p class="product-category">${item.category}${item.size ? ` • Talla ${item.size}` : ''}${item.color ? ` • Color ${item.color}` : ''}</p>
         <div class="quantity-selector">
           <button type="button" data-action="decrease" data-id="${item.id}">-</button>
           <span>${item.quantity}</span>
@@ -471,5 +570,6 @@ const initCartPage = () => {
   renderCartPage();
 };
 
+initFloatingCartButton();
 initProductPageCart();
 initCartPage();
