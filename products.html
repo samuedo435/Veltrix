@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veltrix | Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Veltrix</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="product.html">Product</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html" class="button button--ghost">Sign In</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-block">
+      <div class="container section-header split-header">
+        <div>
+          <p class="eyebrow">Browse collection</p>
+          <h1>Shop performance footwear</h1>
+        </div>
+        <div class="sort-control">
+          <label for="sort">Sort by</label>
+          <select id="sort">
+            <option>Popularity</option>
+            <option>Price: low to high</option>
+            <option>Price: high to low</option>
+            <option>Best rating</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="container shop-layout">
+        <aside class="filters-panel">
+          <div class="filter-card">
+            <h3>Filters</h3>
+            <div class="filter-group">
+              <h4>Category</h4>
+              <label><input type="checkbox"> Running</label>
+              <label><input type="checkbox"> Training</label>
+              <label><input type="checkbox"> Lifestyle</label>
+              <label><input type="checkbox"> Trail</label>
+            </div>
+            <div class="filter-group">
+              <h4>Size</h4>
+              <div class="size-grid">
+                <button type="button">6</button>
+                <button type="button">7</button>
+                <button type="button">8</button>
+                <button type="button">9</button>
+                <button type="button">10</button>
+                <button type="button">11</button>
+              </div>
+            </div>
+            <div class="filter-group">
+              <h4>Price</h4>
+              <input type="range" min="80" max="220" value="160">
+              <div class="range-labels"><span>$80</span><span>$220+</span></div>
+            </div>
+            <div class="filter-group">
+              <h4>Brand</h4>
+              <label><input type="checkbox"> Veltrix</label>
+              <label><input type="checkbox"> Altro</label>
+              <label><input type="checkbox"> Apex</label>
+            </div>
+          </div>
+        </aside>
+
+        <section class="product-listing">
+          <div class="product-grid product-grid--wide">
+            <article class="product-card product-card--list">
+              <img src="https://images.unsplash.com/photo-1595950654328-1d9f3f9ae4d8?auto=format&fit=crop&w=700&q=80" alt="Velocity Runner" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Running</span>
+                <h3>Velocity Runner</h3>
+                <p class="rating">★★★★☆ <span>4.8</span></p>
+                <p class="price">$128</p>
+              </div>
+            </article>
+            <article class="product-card product-card--list">
+              <img src="https://images.unsplash.com/photo-1528701800489-20f49f92c28d?auto=format&fit=crop&w=700&q=80" alt="Fusion Court" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Training</span>
+                <h3>Fusion Court</h3>
+                <p class="rating">★★★★☆ <span>4.6</span></p>
+                <p class="price">$142</p>
+              </div>
+            </article>
+            <article class="product-card product-card--list">
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80" alt="Edge Street" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Lifestyle</span>
+                <h3>Edge Street</h3>
+                <p class="rating">★★★★★ <span>4.9</span></p>
+                <p class="price">$114</p>
+              </div>
+            </article>
+            <article class="product-card product-card--list">
+              <img src="https://images.unsplash.com/photo-1528701800489-20f49f92c28d?auto=format&fit=crop&w=700&q=80" alt="Trail Alpha" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Trail</span>
+                <h3>Trail Alpha</h3>
+                <p class="rating">★★★★☆ <span>4.7</span></p>
+                <p class="price">$155</p>
+              </div>
+            </article>
+            <article class="product-card product-card--list">
+              <img src="https://images.unsplash.com/photo-1612817157391-58b0ea21f0aa?auto=format&fit=crop&w=700&q=80" alt="Shift Runner" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Running</span>
+                <h3>Shift Runner</h3>
+                <p class="rating">★★★★☆ <span>4.5</span></p>
+                <p class="price">$138</p>
+              </div>
+            </article>
+            <article class="product-card product-card--list">
+              <img src="https://images.unsplash.com/photo-1600185362175-7da6f1f4eae4?auto=format&fit=crop&w=700&q=80" alt="Pulse Trainer" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Training</span>
+                <h3>Pulse Trainer</h3>
+                <p class="rating">★★★★☆ <span>4.4</span></p>
+                <p class="price">$132</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-compact">
+    <div class="container footer-grid">
+      <div>
+        <h3>Veltrix</h3>
+        <p>Performance footwear designed for athletes.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>hello@veltrixbrand.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
