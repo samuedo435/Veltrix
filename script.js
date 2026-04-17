@@ -96,6 +96,31 @@ if (productsFilterPanel && applyFiltersButton && clearFiltersButton && productCa
     .filter((input) => input.checked)
     .map((input) => input.value);
 
+  const getSelectedFiltersFromQuery = () => {
+    const params = new URLSearchParams(window.location.search);
+    const rawCategory = params.get('category');
+    if (!rawCategory) {
+      return { categories: [], focuses: [] };
+    }
+
+    const values = rawCategory.split(',').map((value) => value.trim()).filter(Boolean);
+    const categories = [];
+    const focuses = [];
+
+    values.forEach((value) => {
+      const categoryMatch = Array.from(categoryCheckboxes).some((input) => input.value.toLowerCase() === value.toLowerCase());
+      const focusMatch = Array.from(focusCheckboxes).some((input) => input.value.toLowerCase() === value.toLowerCase());
+
+      if (categoryMatch) {
+        categories.push(value);
+      } else if (focusMatch) {
+        focuses.push(value);
+      }
+    });
+
+    return { categories, focuses };
+  };
+
   const getPriceRange = () => {
     let minPrice = priceMinInput ? Number(priceMinInput.value) : 0;
     let maxPrice = priceMaxInput && priceMaxInput.value.trim() !== '' ? Number(priceMaxInput.value) : Infinity;
@@ -303,6 +328,35 @@ if (productsFilterPanel && applyFiltersButton && clearFiltersButton && productCa
   focusCheckboxes.forEach((input) => input.addEventListener('change', () => {
     updateSizeAvailability();
   }));
+
+  const applyQueryFilters = () => {
+    const { categories, focuses } = getSelectedFiltersFromQuery();
+    if (categories.length === 0 && focuses.length === 0) {
+      return;
+    }
+
+    categories.forEach((value) => {
+      const input = Array.from(categoryCheckboxes).find((item) => item.value.toLowerCase() === value.toLowerCase());
+      if (input) {
+        input.checked = true;
+      }
+    });
+
+    focuses.forEach((value) => {
+      const input = Array.from(focusCheckboxes).find((item) => item.value.toLowerCase() === value.toLowerCase());
+      if (input) {
+        input.checked = true;
+      }
+    });
+
+    updateClearButtonState();
+    applyFilters();
+    updateSizeAvailability();
+  };
+
+  if (window.location.search.includes('category=')) {
+    applyQueryFilters();
+  }
 
   if (sortSelect) {
     sortSelect.addEventListener('change', handleSortChange);
