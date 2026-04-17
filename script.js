@@ -121,6 +121,39 @@ if (productsFilterPanel && applyFiltersButton && clearFiltersButton && productCa
     return { categories, focuses };
   };
 
+  const getDiscountFromQuery = () => {
+    const params = new URLSearchParams(window.location.search);
+    const discount = Number(params.get('discount') || 0);
+    return Number.isFinite(discount) && discount > 0 ? discount : 0;
+  };
+
+  const formatDiscountPrice = (value) => `$${Math.round(value)}`;
+
+  const applyPromoPrices = (discount) => {
+    if (discount <= 0) return;
+
+    document.querySelectorAll('.product-card').forEach((card) => {
+      const category = card.dataset.category || '';
+      const focus = card.dataset.focus || '';
+      if ((category === 'Hombres' || category === 'Mujeres') && focus === 'Running') {
+        const priceElement = card.querySelector('.price');
+        const basePrice = Number(card.dataset.price || 0);
+        if (priceElement && basePrice > 0) {
+          const discountedPrice = Math.round(basePrice * (100 - discount) / 100);
+          priceElement.innerHTML = `
+            <span class="price-original">${formatDiscountPrice(basePrice)}</span>
+            <span class="price-discounted">${formatDiscountPrice(discountedPrice)}</span>
+          `;
+        }
+
+        const href = card.getAttribute('href') || '';
+        if (href && !href.includes('discount=')) {
+          card.setAttribute('href', `${href}${href.includes('?') ? '&' : '?'}discount=${discount}`);
+        }
+      }
+    });
+  };
+
   const getPriceRange = () => {
     let minPrice = priceMinInput ? Number(priceMinInput.value) : 0;
     let maxPrice = priceMaxInput && priceMaxInput.value.trim() !== '' ? Number(priceMaxInput.value) : Infinity;
@@ -354,9 +387,11 @@ if (productsFilterPanel && applyFiltersButton && clearFiltersButton && productCa
     updateSizeAvailability();
   };
 
+  const discountRate = getDiscountFromQuery();
   if (window.location.search.includes('category=')) {
     applyQueryFilters();
   }
+  applyPromoPrices(discountRate);
 
   if (sortSelect) {
     sortSelect.addEventListener('change', handleSortChange);
@@ -447,6 +482,19 @@ const initProductPageCart = () => {
   const quantityInput = document.querySelector('#product-quantity');
   const decreaseButton = document.querySelector('.quantity-decrease');
   const increaseButton = document.querySelector('.quantity-increase');
+  const discountRate = Number(new URLSearchParams(window.location.search).get('discount') || 0);
+  const productPriceElement = document.querySelector('.product-price');
+  const originalPrice = productPriceElement
+    ? Number(productPriceElement.textContent.replace(/\$/g, '').trim()) || 0
+    : 0;
+
+  if (productPriceElement && discountRate > 0 && originalPrice > 0) {
+    const discountedPrice = Math.round(originalPrice * (100 - discountRate) / 100);
+    productPriceElement.innerHTML = `
+      <span class="price-original">$${originalPrice}</span>
+      <span class="price-discounted">$${discountedPrice}</span>
+    `;
+  }
 
   const updateAddButton = () => {
     const selectedSize = document.querySelector('.size-selector button.active');
@@ -503,8 +551,8 @@ const initProductPageCart = () => {
 
   addButton.addEventListener('click', () => {
     const title = document.querySelector('h1')?.textContent.trim() || 'Producto';
-    const priceText = document.querySelector('.product-price')?.textContent.replace(/\$/g, '').trim() || '0';
-    const price = Number(priceText) || 0;
+    const price = originalPrice;
+    const discountedPrice = discountRate > 0 ? Math.round(price * (100 - discountRate) / 100) : price;
     const image = document.querySelector('.main-image img')?.src || '';
     const category = document.querySelector('.eyebrow')?.textContent.trim() || '';
     const sizeButton = document.querySelector('.size-selector button.active');
@@ -518,7 +566,7 @@ const initProductPageCart = () => {
     }
 
     const productId = `${title}-${size}-${color}`;
-    addToCart({ id: productId, title, price, image, category, size, color, quantity });
+    addToCart({ id: productId, title, price: discountedPrice, image, category, size, color, quantity });
 
     const originalText = addButton.textContent;
     addButton.textContent = '¡Añadido!';
