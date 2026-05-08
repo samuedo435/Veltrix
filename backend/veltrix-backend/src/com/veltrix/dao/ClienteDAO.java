@@ -71,4 +71,44 @@ public void listarClientes() {
         e.printStackTrace();
     }
     }
+//UPDATE
+public void actualizarCliente(Cliente cliente) {
+
+    String sql = "UPDATE Cliente SET nombre = ?, apellido = ?, correo = ?, telefono = ?, direccion = ?, contrasena = ? WHERE id_cliente = ?";
+
+    try {
+
+        Connection conexion = Conexion.conectar();
+
+        PreparedStatement statement = conexion.prepareStatement(sql);
+
+        statement.setString(1, cliente.getNombre());
+        statement.setString(2, cliente.getApellido());
+        statement.setString(3, cliente.getCorreo());
+        statement.setString(4, cliente.getTelefono());
+        statement.setString(5, cliente.getDireccion());
+        statement.setString(6, cliente.getContrasena());
+
+        // ID del cliente a actualizar
+        statement.setInt(7, cliente.getIdCliente());
+
+        int filasActualizadas = statement.executeUpdate();
+
+        if (filasActualizadas > 0) {
+
+            System.out.println("Cliente actualizado correctamente");
+
+        } else {
+
+            System.out.println("No se encontró el cliente");
+        }
+
+        conexion.close();
+
+    } catch (Exception e) {
+
+        System.out.println("Error al actualizar cliente");
+        e.printStackTrace();
+    }
+    }
 }
