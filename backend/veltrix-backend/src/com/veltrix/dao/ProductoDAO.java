@@ -8,7 +8,7 @@ import com.veltrix.connection.Conexion;
 import com.veltrix.model.Producto;
 //CRUD
 public class ProductoDAO {
-//insertar producto
+//CREATE
     public void insertarProducto(Producto producto) {
 
         String sql = "INSERT INTO Producto(nombre, descripcion, talla, color, precio, stock, id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -39,7 +39,7 @@ public class ProductoDAO {
             e.printStackTrace();
         }
     }
-//consultar productos
+//READ
     public void listarProductos() {
 
     String sql = "SELECT * FROM Producto";
@@ -69,7 +69,7 @@ public class ProductoDAO {
         e.printStackTrace();
     }
 }
-//actualizar producto
+//UPDATE
 public void actualizarProducto(Producto producto) {
 
     String sql = "UPDATE Producto SET nombre = ?, descripcion = ?, talla = ?, color = ?, precio = ?, stock = ?, id_categoria = ? WHERE id_producto = ?";
@@ -110,7 +110,7 @@ public void actualizarProducto(Producto producto) {
         e.printStackTrace();
     }
 }
-//eliminar producto
+//DELETE
 public void eliminarProducto(int idProducto) {
 
     String sql = "DELETE FROM Producto WHERE id_producto = ?";

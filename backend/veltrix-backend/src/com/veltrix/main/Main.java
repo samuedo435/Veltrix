@@ -1,13 +1,23 @@
 package com.veltrix.main;
 
-import com.veltrix.dao.ProductoDAO;
+import com.veltrix.dao.ClienteDAO;
+import com.veltrix.model.Cliente;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        ProductoDAO dao = new ProductoDAO();
+        Cliente cliente = new Cliente();
 
-        dao.eliminarProducto(1);
+        cliente.setNombre("Samuel");
+        cliente.setApellido("Ortega");
+        cliente.setCorreo("samuel@gmail.com");
+        cliente.setTelefono("3001234567");
+        cliente.setDireccion("Cali");
+        cliente.setContrasena("123456");
+
+        ClienteDAO dao = new ClienteDAO();
+
+        dao.insertarCliente(cliente);
     }
 }

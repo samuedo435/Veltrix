@@ -1,5 +1,40 @@
 package com.veltrix.dao;
 
-public class ClienteDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
+import com.veltrix.connection.Conexion;
+import com.veltrix.model.Cliente;
+//CRUD
+public class ClienteDAO {
+//CREATE
+    public void insertarCliente(Cliente cliente) {
+
+        String sql = "INSERT INTO Cliente(nombre, apellido, correo, telefono, direccion, contrasena) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try {
+
+            Connection conexion = Conexion.conectar();
+
+            PreparedStatement statement = conexion.prepareStatement(sql);
+
+            statement.setString(1, cliente.getNombre());
+            statement.setString(2, cliente.getApellido());
+            statement.setString(3, cliente.getCorreo());
+            statement.setString(4, cliente.getTelefono());
+            statement.setString(5, cliente.getDireccion());
+            statement.setString(6, cliente.getContrasena());
+
+            statement.executeUpdate();
+
+            System.out.println("Cliente insertado correctamente");
+
+            conexion.close();
+
+        } catch (Exception e) {
+
+            System.out.println("Error al insertar cliente");
+            e.printStackTrace();
+        }
+    }
 }
