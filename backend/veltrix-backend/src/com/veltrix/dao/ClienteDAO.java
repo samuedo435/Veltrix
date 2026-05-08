@@ -2,6 +2,7 @@ package com.veltrix.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import com.veltrix.connection.Conexion;
 import com.veltrix.model.Cliente;
@@ -36,5 +37,38 @@ public class ClienteDAO {
             System.out.println("Error al insertar cliente");
             e.printStackTrace();
         }
+    }
+//READ
+public void listarClientes() {
+
+    String sql = "SELECT * FROM Cliente";
+
+    try {
+
+        Connection conexion = Conexion.conectar();
+
+        PreparedStatement statement = conexion.prepareStatement(sql);
+
+        ResultSet resultado = statement.executeQuery();
+
+        while (resultado.next()) {
+
+            System.out.println("ID: " + resultado.getInt("id_cliente"));
+            System.out.println("Nombre: " + resultado.getString("nombre"));
+            System.out.println("Apellido: " + resultado.getString("apellido"));
+            System.out.println("Correo: " + resultado.getString("correo"));
+            System.out.println("Telefono: " + resultado.getString("telefono"));
+            System.out.println("Direccion: " + resultado.getString("direccion"));
+
+            System.out.println("-----------------------------");
+        }
+
+        conexion.close();
+
+    } catch (Exception e) {
+
+        System.out.println("Error al listar clientes");
+        e.printStackTrace();
+    }
     }
 }
