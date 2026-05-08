@@ -2,12 +2,13 @@ package com.veltrix.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import com.veltrix.connection.Conexion;
 import com.veltrix.model.Producto;
-
+//CRUD
 public class ProductoDAO {
-
+//insertar producto
     public void insertarProducto(Producto producto) {
 
         String sql = "INSERT INTO Producto(nombre, descripcion, talla, color, precio, stock, id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -38,4 +39,34 @@ public class ProductoDAO {
             e.printStackTrace();
         }
     }
+//consultar productos
+    public void listarProductos() {
+
+    String sql = "SELECT * FROM Producto";
+
+    try {
+
+        Connection conexion = Conexion.conectar();
+
+        PreparedStatement statement = conexion.prepareStatement(sql);
+
+        ResultSet resultado = statement.executeQuery();
+
+        while (resultado.next()) {
+
+            System.out.println("ID: " + resultado.getInt("id_producto"));
+            System.out.println("Nombre: " + resultado.getString("nombre"));
+            System.out.println("Precio: " + resultado.getInt("precio"));
+            System.out.println("Stock: " + resultado.getInt("stock"));
+            System.out.println("----------------------------");
+        }
+
+        conexion.close();
+
+    } catch (Exception e) {
+
+        System.out.println("Error al listar productos");
+        e.printStackTrace();
+    }
+}
 }
