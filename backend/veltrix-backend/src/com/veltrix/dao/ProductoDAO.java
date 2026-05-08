@@ -110,4 +110,36 @@ public void actualizarProducto(Producto producto) {
         e.printStackTrace();
     }
 }
+//eliminar producto
+public void eliminarProducto(int idProducto) {
+
+    String sql = "DELETE FROM Producto WHERE id_producto = ?";
+
+    try {
+
+        Connection conexion = Conexion.conectar();
+
+        PreparedStatement statement = conexion.prepareStatement(sql);
+
+        statement.setInt(1, idProducto);
+
+        int filasEliminadas = statement.executeUpdate();
+
+        if (filasEliminadas > 0) {
+
+            System.out.println("Producto eliminado correctamente");
+
+        } else {
+
+            System.out.println("No se encontró el producto");
+        }
+
+        conexion.close();
+
+    } catch (Exception e) {
+
+        System.out.println("Error al eliminar producto");
+        e.printStackTrace();
+    }
+}
 }   
