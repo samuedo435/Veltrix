@@ -9,16 +9,19 @@ public class Main {
 
         Producto producto = new Producto();
 
-        producto.setNombre("Nike Air Max");
-        producto.setDescripcion("Zapatos deportivos");
-        producto.setTalla(42);
-        producto.setColor("Negro");
-        producto.setPrecio(350000);
-        producto.setStock(10);
+        // ID del producto que ya existe
+        producto.setIdProducto(1);
+
+        producto.setNombre("Nike Air Max Plus");
+        producto.setDescripcion("Zapatos deportivos actualizados");
+        producto.setTalla(43);
+        producto.setColor("Blanco");
+        producto.setPrecio(420000);
+        producto.setStock(15);
         producto.setIdCategoria(1);
 
         ProductoDAO dao = new ProductoDAO();
 
-        dao.insertarProducto(producto);
+        dao.actualizarProducto(producto);
     }
 }
