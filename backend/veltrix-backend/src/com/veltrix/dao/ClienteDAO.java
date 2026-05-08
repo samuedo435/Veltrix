@@ -111,4 +111,36 @@ public void actualizarCliente(Cliente cliente) {
         e.printStackTrace();
     }
     }
+//DELETE
+public void eliminarCliente(int idCliente) {
+
+    String sql = "DELETE FROM Cliente WHERE id_cliente = ?";
+
+    try {
+
+        Connection conexion = Conexion.conectar();
+
+        PreparedStatement statement = conexion.prepareStatement(sql);
+
+        statement.setInt(1, idCliente);
+
+        int filasEliminadas = statement.executeUpdate();
+
+        if (filasEliminadas > 0) {
+
+            System.out.println("Cliente eliminado correctamente");
+
+        } else {
+
+            System.out.println("No se encontró el cliente");
+        }
+
+        conexion.close();
+
+    } catch (Exception e) {
+
+        System.out.println("Error al eliminar cliente");
+        e.printStackTrace();
+    }
+    }
 }
