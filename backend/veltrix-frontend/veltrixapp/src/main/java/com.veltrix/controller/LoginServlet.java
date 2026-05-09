@@ -1,81 +1,56 @@
 package com.veltrix.controller;
 
-// IMPORTACIONES
+import com.veltrix.dao.ClienteDAO;
+import com.veltrix.model.Cliente;
 
 import java.io.IOException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import com.veltrix.dao.ClienteDAO;
-import com.veltrix.model.Cliente;
-
-// RUTA DEL SERVLET
-
 @WebServlet("/login")
-
-
-// CLASE PRINCIPAL
 
 public class LoginServlet extends HttpServlet {
 
-    
-    // MÉTODO POST
-    
     @Override
-protected void doPost(HttpServletRequest request,
-                      HttpServletResponse response)
-                      throws ServletException, IOException {
+    protected void doPost(
+            HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
 
-    request.setCharacterEncoding("UTF-8");
-    response.setContentType("text/html;charset=UTF-8");
+        String correo =
+                request.getParameter("correo");
 
-    
-    // DATOS DEL FORMULARIO
-    
-    String correo = request.getParameter("correo");
-    String contrasena = request.getParameter("clave");
+        String clave =
+                request.getParameter("clave");
 
-    
-    // OBJETO DAO
-    
-    ClienteDAO clienteDAO = new ClienteDAO();
+        
+        ClienteDAO clienteDAO =
+                new ClienteDAO();
 
-    
-    // VALIDAR LOGIN
-    
-    Cliente cliente = clienteDAO.validarLogin(correo, contrasena);
+        
+        Cliente cliente =
+                clienteDAO.validarLogin(correo, clave);
 
-    
-    // SI EL CLIENTE EXISTE
-    
-    if(cliente != null) {
+        
+        if (cliente != null) {
 
-    
-    // CREAR SESIÓN
-    
-    HttpSession sesion = request.getSession();
+            HttpSession sesion =
+                    request.getSession();
 
-    
-    // GUARDAR DATOS DEL CLIENTE
-    
-    sesion.setAttribute("cliente", cliente);
+            sesion.setAttribute("cliente", cliente);
 
-    
-    // REDIRECCIONAR
-    
-    response.sendRedirect("productos.jsp");
+            response.sendRedirect("productos.jsp");
 
-    } else {
+        } else {
 
-        response.sendRedirect("login.jsp");
-
+            response.getWriter().println(
+                    "Correo o contraseña incorrectos"
+            );
+        }
     }
-}
-
 }

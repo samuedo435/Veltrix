@@ -49,7 +49,7 @@
             <button class="tab active">Iniciar sesión</button>
             <button class="tab">Registrarse</button>
           </div>
-          <form action="login" method="post">
+          <form action="${pageContext.request.contextPath}/login" method="post">
             <label>
               <span>Correo electrónico</span>
               <input  type="email" name="correo" placeholder="nombre@dominio.com">
@@ -58,7 +58,7 @@
               <span>Contraseña</span>
               <input  type="password" name="clave" placeholder="Ingresa tu contraseña">
             </label>
-            <button class="button button--primary button--full">Iniciar sesión</button>
+              <button type="submit" class="button button--primary button--full">Iniciar sesión</button>
             <p class="form-subtext">¿Nuevo en Veltrix? Crea una cuenta para guardar tus preferencias.</p>
           </form>
         </div>

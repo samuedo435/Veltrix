@@ -6,26 +6,44 @@ import java.sql.SQLException;
 
 public class Conexion {
 
-    // Datos de conexión
-    private static final String URL = "jdbc:mysql://localhost:3306/veltrix";
-    private static final String USER = "root";
-    private static final String PASSWORD = "$Amuelchocolate777";
+    private static final String URL =
+            "jdbc:mysql://localhost:3306/veltrix";
 
-    // Método para conectar
+    private static final String USER = "root";
+
+    private static final String PASSWORD =
+            "$Amuelchocolate777";
+
     public static Connection conectar() {
 
         Connection conexion = null;
 
         try {
 
-            // Establecer conexión
-            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+            
+            // CARGAR DRIVER
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-            System.out.println("Conexión exitosa a la base de datos");
+            
+            // CONECTAR
+            
+            conexion = DriverManager.getConnection(
+                    URL,
+                    USER,
+                    PASSWORD
+            );
+
+            System.out.println("Conexión exitosa");
+
+        } catch (ClassNotFoundException e) {
+
+            System.out.println("Driver no encontrado");
+            e.printStackTrace();
 
         } catch (SQLException e) {
 
-            System.out.println("Error en la conexión");
+            System.out.println("Error de conexión");
             e.printStackTrace();
         }
 
