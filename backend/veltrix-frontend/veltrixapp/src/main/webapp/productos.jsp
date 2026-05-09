@@ -1,3 +1,5 @@
+<%@ page import="com.veltrix.model.Cliente" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,8 +8,11 @@
 </head>
 
 <body>
-
-    <h1>Bienvenido a Veltrix</h1>
+<%
+    Cliente cliente =
+        (Cliente) session.getAttribute("cliente");
+%>
+    <h1>Bienvenido <%= cliente.getNombre() %></h1>
 
     <h2>Login exitoso</h2>
 

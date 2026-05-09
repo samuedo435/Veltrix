@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import com.veltrix.dao.ClienteDAO;
 import com.veltrix.model.Cliente;
@@ -55,7 +56,20 @@ protected void doPost(HttpServletRequest request,
     
     if(cliente != null) {
 
-        response.sendRedirect("productos.jsp");
+    
+    // CREAR SESIÓN
+    
+    HttpSession sesion = request.getSession();
+
+    
+    // GUARDAR DATOS DEL CLIENTE
+    
+    sesion.setAttribute("cliente", cliente);
+
+    
+    // REDIRECCIONAR
+    
+    response.sendRedirect("productos.jsp");
 
     } else {
 
