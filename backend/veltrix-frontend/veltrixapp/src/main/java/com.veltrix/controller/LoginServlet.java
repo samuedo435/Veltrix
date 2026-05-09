@@ -29,7 +29,9 @@ public class LoginServlet extends HttpServlet {
                           HttpServletResponse response)
                           throws ServletException, IOException {
 
-        
+        // CARACTERES ESPECIALES
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         // OBTENER DATOS DEL FORMULARIO
         
         String correo = request.getParameter("correo");
