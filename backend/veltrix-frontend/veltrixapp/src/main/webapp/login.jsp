@@ -1,31 +1,85 @@
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Login Veltrix</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veltrix | Iniciar sesión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Veltrix</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Inicio</a>
+        <a href="products.html">Tienda</a>
+        
+        <a href="cart.html">Carrito</a>
+        <a href="login.html" class="button button--ghost">Iniciar sesión</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
 
-    <h1>Iniciar Sesión</h1>
+  <main>
+    <section class="section-block auth-section">
+      <div class="container auth-grid">
+        <div class="auth-panel auth-intro">
+          <span class="eyebrow">Bienvenido de nuevo</span>
+          <h1>Accede a tu cuenta Veltrix</h1>
+          <p>Guarda favoritos, gestiona pedidos y paga más rápido. Únete al movimiento con calzado deportivo de alto rendimiento.</p>
+          <div class="feature-list">
+            <p>• Lanzamientos exclusivos</p>
+            <p>• Pago rápido</p>
+            <p>• Seguimiento de pedidos</p>
+          </div>
+        </div>
 
-    <form action="login" method="post">
+        <div class="auth-panel auth-form">
+          <div class="form-switch">
+            <button class="tab active">Iniciar sesión</button>
+            <button class="tab">Registrarse</button>
+          </div>
+          <form action="login" method="post">
+            <label>
+              <span>Correo electrónico</span>
+              <input  type="email" name="correo" placeholder="nombre@dominio.com">
+            </label>
+            <label>
+              <span>Contraseña</span>
+              <input  type="password" name="clave" placeholder="Ingresa tu contraseña">
+            </label>
+            <button class="button button--primary button--full">Iniciar sesión</button>
+            <p class="form-subtext">¿Nuevo en Veltrix? Crea una cuenta para guardar tus preferencias.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        <label>Correo:</label>
-        <input type="email" name="correo">
+  <footer class="site-footer footer-compact">
+    <div class="container footer-grid">
+      <div>
+        <h3>Veltrix</h3>
+        <p>Performance footwear designed for athletes.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>hello@veltrixbrand.com</p>
+      </div>
+    </div>
+  </footer>
 
-        <br><br>
-
-        <label>Contraseña:</label>
-        <input type="password" name="clave">
-
-        <br><br>
-
-        <button type="submit">
-            Ingresar
-        </button>
-
-    </form>
-
+  <script src="js/script.js"></script>
 </body>
 </html>
+
