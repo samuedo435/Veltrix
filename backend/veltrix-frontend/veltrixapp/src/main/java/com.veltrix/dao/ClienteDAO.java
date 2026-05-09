@@ -143,4 +143,50 @@ public void eliminarCliente(int idCliente) {
         e.printStackTrace();
     }
     }
+    // LOGIN
+
+    public Cliente validarLogin(String correo, String contrasena) {
+
+        Cliente cliente = null;
+
+        String sql = "SELECT * FROM Cliente WHERE correo = ? AND contrasena = ?";
+
+        try {
+
+            Connection conexion = Conexion.conectar();
+
+            PreparedStatement statement = conexion.prepareStatement(sql);
+
+            statement.setString(1, correo);
+            statement.setString(2, contrasena);
+
+            ResultSet resultado = statement.executeQuery();
+
+            
+            // SI ENCUENTRA EL USUARIO
+            
+            if (resultado.next()) {
+
+                cliente = new Cliente();
+
+                cliente.setIdCliente(resultado.getInt("id_cliente"));
+                cliente.setNombre(resultado.getString("nombre"));
+                cliente.setApellido(resultado.getString("apellido"));
+                cliente.setCorreo(resultado.getString("correo"));
+                cliente.setTelefono(resultado.getString("telefono"));
+                cliente.setDireccion(resultado.getString("direccion"));
+                cliente.setContrasena(resultado.getString("contrasena"));
+
+            }
+
+            conexion.close();
+
+        } catch (Exception e) {
+
+            System.out.println("Error al validar login");
+            e.printStackTrace();
+        }
+
+        return cliente;
+    }
 }

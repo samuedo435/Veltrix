@@ -1,4 +1,4 @@
-package controller;
+package com.veltrix.controller;
 
 // IMPORTACIONES
 
@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import com.veltrix.dao.ClienteDAO;
+import com.veltrix.model.Cliente;
 
 // RUTA DEL SERVLET
 
@@ -25,38 +27,41 @@ public class LoginServlet extends HttpServlet {
     // MÉTODO POST
     
     @Override
-    protected void doPost(HttpServletRequest request,
-                          HttpServletResponse response)
-                          throws ServletException, IOException {
+protected void doPost(HttpServletRequest request,
+                      HttpServletResponse response)
+                      throws ServletException, IOException {
 
-        // CARACTERES ESPECIALES
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
-        // OBTENER DATOS DEL FORMULARIO
-        
-        String correo = request.getParameter("correo");
-        String clave = request.getParameter("clave");
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html;charset=UTF-8");
 
-        
-        // VALIDACIÓN SIMPLE
-        
-        if(correo.equals("admin@gmail.com")
-                && clave.equals("1234")) {
+    
+    // DATOS DEL FORMULARIO
+    
+    String correo = request.getParameter("correo");
+    String contrasena = request.getParameter("clave");
 
-            
-            // SI EL LOGIN ES CORRECTO
-            
-            response.sendRedirect("productos.jsp");
+    
+    // OBJETO DAO
+    
+    ClienteDAO clienteDAO = new ClienteDAO();
 
-        } else {
+    
+    // VALIDAR LOGIN
+    
+    Cliente cliente = clienteDAO.validarLogin(correo, contrasena);
 
-            
-            // SI EL LOGIN ES INCORRECTO
-            
-            response.sendRedirect("login.jsp");
+    
+    // SI EL CLIENTE EXISTE
+    
+    if(cliente != null) {
 
-        }
+        response.sendRedirect("productos.jsp");
+
+    } else {
+
+        response.sendRedirect("login.jsp");
 
     }
+}
 
 }
