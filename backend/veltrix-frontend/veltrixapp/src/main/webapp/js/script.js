@@ -434,11 +434,11 @@ const updateCartCountDisplay = () => {
 
 const initFloatingCartButton = () => {
   const currentPage = window.location.pathname.split('/').pop();
-  if (currentPage === 'cart.html') return;
+  if (currentPage === 'cart.jsp') return;
 
-  const cartLink = currentPage && currentPage !== 'index.html' && window.location.pathname.includes('/productos/')
-    ? '../cart.html'
-    : 'cart.html';
+  const cartLink = currentPage && currentPage !== 'index.jsp' && window.location.pathname.includes('/productos/')
+    ? '../cart.jsp'
+    : 'cart.jsp';
 
   const button = document.createElement('a');
   button.href = cartLink;
