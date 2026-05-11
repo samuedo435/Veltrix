@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 
             sesion.setAttribute("cliente", cliente);
 
-            response.sendRedirect("productos.jsp");
+            response.sendRedirect("products.jsp");
 
         } else {
 
