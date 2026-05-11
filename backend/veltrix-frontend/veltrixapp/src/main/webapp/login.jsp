@@ -1,4 +1,20 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page import="com.veltrix.model.Cliente"%>
+<%
+
+Cliente clienteSesion =
+        (Cliente) session.getAttribute("cliente");
+
+if(clienteSesion != null){
+
+    out.println("Bienvenido " + clienteSesion.getNombre());
+
+}else{
+
+    out.println("No hay sesión iniciada");
+}
+
+%>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -14,13 +30,13 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand">Veltrix</a>
+      <a href="index.jsp" class="brand">Veltrix</a>
       <nav class="main-nav" aria-label="Main navigation">
-        <a href="index.html">Inicio</a>
-        <a href="products.html">Tienda</a>
+        <a href="index.jsp">Inicio</a>
+        <a href="products.jsp">Tienda</a>
         
-        <a href="cart.html">Carrito</a>
-        <a href="login.html" class="button button--ghost">Iniciar sesión</a>
+        <a href="cart.jsp">Carrito</a>
+        <a href="login.jsp" class="button button--ghost">Iniciar sesión</a>
       </nav>
       <button class="nav-toggle" aria-label="Toggle navigation">
         <span></span>

@@ -1,0 +1,163 @@
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veltrix | Calzado de alto rendimiento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.jsp" class="brand">Veltrix</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.jsp">Inicio</a>
+        <a href="products.jsp">Tienda</a>
+        <a href="cart.jsp">Carrito</a>
+        <a href="login.jsp" class="button button--ghost">Iniciar sesión</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Nueva colección</span>
+          <h1>Eleva tu rendimiento con zapatillas de alto desempeño.</h1>
+          <p>Diseñadas para velocidad, comodidad e impacto diario. Descubre la última colección Veltrix para atletas modernos.</p>
+          <div class="hero-actions">
+            <a href="products.jsp" class="button button--primary">Comprar ahora</a>
+            <a href="#featured" class="button button--ghost">Explorar</a>
+          </div>
+        </div>
+        <div class="hero-image hero-card">
+          <div class="hero-tag">Nueva colección</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured" class="section-block">
+      <div class="container section-header">
+        <div>
+          <p class="eyebrow">Destacados</p>
+          <h2>Los más vendidos para un estilo de vida dinámico</h2>
+        </div>
+        <a href="products.jsp" class="link-secondary">Ver todos los productos</a>
+      </div>
+      <div class="product-grid">
+        <a class="product-card" href="productos/sprintflow.jsp">
+          <img src="img/zapatos/hombre/hombreRunning1.png" alt="Sprintflow" loading="lazy">
+          <div class="product-info">
+            <span class="product-category">Running</span>
+            <h3>Sprintflow</h3>
+            <p>$145</p>
+          </div>
+        </a>
+        <a class="product-card" href="productos/nova-court.jsp">
+          <img src="img/zapatos/mujer/mujerCasual2.png" alt="Nova Court" loading="lazy">
+          <div class="product-info">
+            <span class="product-category">Casual</span>
+            <h3>Nova Court</h3>
+            <p>$125</p>
+          </div>
+        </a>
+        <a class="product-card" href="productos/tiny-trail.jsp">
+          <img src="img/zapatos/infantil/nino2.png" alt="Tiny Trail" loading="lazy">
+          <div class="product-info">
+            <span class="product-category">Trail</span>
+            <h3>Tiny Trail</h3>
+            <p>$75</p>
+          </div>
+        </a>
+        <a class="product-card" href="productos/unity-step.jsp">
+          <img src="img/zapatos/unisex/unisexCasual1.jpg" alt="Unity Step" loading="lazy">
+          <div class="product-info">
+            <span class="product-category">Unisex</span>
+            <h3>Unity Step</h3>
+            <p>$110</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section-block section-alt">
+      <div class="container categories-panel">
+        <div class="section-intro">
+          <p class="eyebrow">Navega por categoría</p>
+          <h2>Encuentra tu estilo ideal</h2>
+        </div>
+        <div class="category-grid">
+          <a href="products.jsp?category=Hombres" class="category-card">
+            <span>Hombres</span>
+            <p>Siluetas poderosas para días activos.</p>
+          </a>
+          <a href="products.jsp?category=Mujeres" class="category-card">
+            <span>Mujeres</span>
+            <p>Rendimiento fluido con estilo audaz.</p>
+          </a>
+          <a href="products.jsp?category=Niños" class="category-card">
+            <span>Niños</span>
+            <p>Estilo cómodo y resistente pensado para los más pequeños.</p>
+          </a>
+          <a href="products.jsp?category=Casual" class="category-card">
+            <span>Casual</span>
+            <p>Comodidad diaria con un toque moderno.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="promo-banner">
+      <div class="container promo-card">
+        <div>
+          <p class="eyebrow">Oferta por tiempo limitado</p>
+          <h2>Ahorra 20 % en la nueva serie Velocity</h2>
+          <p>Mejora tu estilo con amortiguación ligera y diseño impactante.</p>
+        </div>
+        <a href="products.jsp?category=Hombres,Mujeres,Running&discount=20" class="button button--primary">Comprar ahora</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Veltrix</h3>
+        <p>Performance footwear designed for athletes, urban explorers, and style seekers.</p>
+      </div>
+      <div>
+        <h4>Enlaces rápidos</h4>
+        <a href="products.jsp">Tienda</a>
+        
+        <a href="cart.jsp">Carrito</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>hello@veltrixbrand.com</p>
+        <p>+1 800 423 190</p>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <div class="social-links">
+          <a href="coming-soon.jsp">Instagram</a>
+          <a href="coming-soon.jsp">TikTok</a>
+          <a href="coming-soon.jsp">Twitter</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+
