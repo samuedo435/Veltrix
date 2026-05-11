@@ -1,20 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="com.veltrix.model.Cliente"%>
-<%
 
-Cliente clienteSesion =
-        (Cliente) session.getAttribute("cliente");
-
-if(clienteSesion != null){
-
-    out.println("Bienvenido " + clienteSesion.getNombre());
-
-}else{
-
-    out.println("No hay sesión iniciada");
-}
-
-%>
 
 <!DOCTYPE html>
 <html lang="es">
