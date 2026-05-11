@@ -1,0 +1,120 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veltrix | Roadstride Casual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.jsp" class="brand">Veltrix</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../index.jsp">Inicio</a>
+        <a href="../products.jsp">Tienda</a>
+        
+        <a href="../cart.jsp">Carrito</a>
+        <a href="../login.jsp" class="button button--ghost">Iniciar sesión</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-block">
+      <div class="container product-detail-grid">
+        <div class="gallery-panel">
+          <div class="main-image">
+            <img src="../img/zapatos/hombre/hombreCasual1.jpg" alt="Roadstride Casual" loading="lazy">
+          </div>
+        </div>
+
+        <div class="product-detail-copy">
+          <span class="eyebrow">Casual urbano</span>
+          <h1>Roadstride Casual</h1>
+          <p class="product-price">$120</p>
+          <p class="rating">★★★★☆ <span>4.5 de 5</span></p>
+          <p class="product-description">Roadstride Casual combina comodidad premium con una suela flexible para el uso diario. Ideal para caminar por la ciudad y mantener un estilo moderno sin perder amortiguación.</p>
+
+          <div class="product-meta">
+            <div>
+              <h4>Tallas disponibles</h4>
+              <div class="size-selector">
+                <button type="button">36</button>
+                <button type="button">37</button>
+                <button type="button">38</button>
+                <button type="button">39</button>
+                <button type="button">40</button>
+                <button type="button">41</button>
+                <button type="button">42</button>
+              </div>
+            </div>
+            <div>
+              <h4>Color</h4>
+              <div class="color-swatchs">
+                <button class="swatch" aria-label="Negro"></button>
+                <button class="swatch" aria-label="Blanco"></button>
+                <button class="swatch" aria-label="Gris"></button>
+              </div>
+            </div>
+                    <div class="quantity-control">
+            <label for="product-quantity">Cantidad</label>
+            <div class="quantity-input">
+              <button type="button" class="quantity-decrease">-</button>
+              <input id="product-quantity" type="number" min="1" value="1">
+              <button type="button" class="quantity-increase">+</button>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button class="button button--primary">Añadir al carrito</button>
+            <button class="button button--ghost">Añadir a favoritos</button>
+          </div>
+
+          <div class="reviews-panel">
+            <div class="reviews-header">
+              <h3>Reseñas</h3>
+              <span>4.5 / 5</span>
+            </div>
+            <div class="review-item">
+              <p class="review-text">"Perfectas para el día a día, muy cómodas y con buena sujeción."</p>
+              <p class="review-author">— Alma, CDMX</p>
+            </div>
+            <div class="review-item">
+              <p class="review-text">"El diseño casual es elegante y la amortiguación es ideal para caminar largas horas."</p>
+              <p class="review-author">— Diego, MX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-compact">
+    <div class="container footer-grid">
+      <div>
+        <h3>Veltrix</h3>
+        <p>Calzado deportivo diseñado para atletas.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p>hello@veltrixbrand.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
+
+
+

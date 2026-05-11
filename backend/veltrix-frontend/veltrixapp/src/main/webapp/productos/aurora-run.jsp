@@ -1,0 +1,118 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veltrix | Aurora Run</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.jsp" class="brand">Veltrix</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../index.jsp">Inicio</a>
+        <a href="../products.jsp">Tienda</a>
+        
+        <a href="../cart.jsp">Carrito</a>
+        <a href="../login.jsp" class="button button--ghost">Iniciar sesión</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-block">
+      <div class="container product-detail-grid">
+        <div class="gallery-panel">
+          <div class="main-image">
+            <img src="../img/zapatos/mujer/mujerRunning1.png" alt="Aurora Run" loading="lazy">
+          </div>
+        </div>
+
+        <div class="product-detail-copy">
+          <span class="eyebrow">Running avanzado</span>
+          <h1>Aurora Run</h1>
+          <p class="product-price">$150</p>
+          <p class="rating">★★★★★ <span>4.9 de 5</span></p>
+          <p class="product-description">Aurora Run está diseñada para corredoras que buscan velocidad y confort. Su malla ultraligera y amortiguación de retorno hacen cada zancada más eficiente.</p>
+
+          <div class="product-meta">
+            <div>
+              <h4>Tallas disponibles</h4>
+              <div class="size-selector">
+                <button type="button">36</button>
+                <button type="button">37</button>
+                <button type="button">38</button>
+                <button type="button">39</button>
+                <button type="button">40</button>
+              </div>
+            </div>
+            <div>
+              <h4>Color</h4>
+              <div class="color-swatchs">
+                <button class="swatch" aria-label="Azul"></button>
+                <button class="swatch" aria-label="Coral"></button>
+                <button class="swatch" aria-label="Blanco"></button>
+              </div>
+            </div>
+                    <div class="quantity-control">
+            <label for="product-quantity">Cantidad</label>
+            <div class="quantity-input">
+              <button type="button" class="quantity-decrease">-</button>
+              <input id="product-quantity" type="number" min="1" value="1">
+              <button type="button" class="quantity-increase">+</button>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button class="button button--primary">Añadir al carrito</button>
+            <button class="button button--ghost">Añadir a favoritos</button>
+          </div>
+
+          <div class="reviews-panel">
+            <div class="reviews-header">
+              <h3>Reseñas</h3>
+              <span>4.9 / 5</span>
+            </div>
+            <div class="review-item">
+              <p class="review-text">"Sensación super ligera y excelente impulso para intervalos."</p>
+              <p class="review-author">— Ana, ES</p>
+            </div>
+            <div class="review-item">
+              <p class="review-text">"Mi zapatilla favorita para carreras de 10k y entrenamientos rápidos."</p>
+              <p class="review-author">— Laura, AR</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-compact">
+    <div class="container footer-grid">
+      <div>
+        <h3>Veltrix</h3>
+        <p>Calzado deportivo diseñado para atletas.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p>hello@veltrixbrand.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
+
+
+
