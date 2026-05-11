@@ -1,0 +1,92 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veltrix | Carrito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.jsp" class="brand">Veltrix</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.jsp">Inicio</a>
+        <a href="products.jsp">Tienda</a>
+        
+        <a href="cart.jsp">Carrito</a>
+        <a href="login.jsp" class="button button--ghost">Iniciar sesión</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-block">
+      <div class="container cart-layout">
+        <div class="cart-panel">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Tu carrito</p>
+              <h1>Productos seleccionados</h1>
+            </div>
+            <p class="cart-count">0 artículos</p>
+          </div>
+
+          <div class="cart-empty">
+            <p class="empty-title">Tu carrito está vacío</p>
+            <p class="empty-text">Agrega tus zapatillas favoritas para comenzar tu compra.</p>
+            <a href="products.jsp" class="button button--primary">Ir a la tienda</a>
+          </div>
+
+          <div class="cart-items" hidden></div>
+        </div>
+
+        <aside class="order-summary">
+          <div class="summary-card">
+            <h2>Resumen del pedido</h2>
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span class="summary-subtotal">$0</span>
+            </div>
+            <div class="summary-row">
+              <span>Envío</span>
+              <span class="summary-shipping">$0</span>
+            </div>
+            <div class="summary-row summary-total">
+              <span>Total</span>
+              <span class="summary-total-value">$0</span>
+            </div>
+            <a href="coming-soon.jsp" class="button button--primary button--full">Pagar</a>
+            <p class="summary-note">Devoluciones gratis y pago seguro.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-compact">
+    <div class="container footer-grid">
+      <div>
+        <h3>Veltrix</h3>
+        <p>Calzado deportivo diseñado para atletas.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p>hello@veltrixbrand.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+
