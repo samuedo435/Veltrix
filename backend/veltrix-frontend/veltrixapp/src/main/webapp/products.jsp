@@ -1,0 +1,239 @@
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page import="com.veltrix.model.Cliente" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veltrix | Tienda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.jsp" class="brand">Veltrix</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.jsp">Inicio</a>
+        <a href="products.jsp">Tienda</a>
+        
+        <a href="cart.jsp">Carrito</a>
+        <a href="login.jsp" class="button button--ghost">Iniciar sesión</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-block">
+      <div class="container section-header split-header">
+        <div>
+          <p class="eyebrow">Explora la colección</p>
+          <h1>Tienda de calzado de alto rendimiento</h1>
+        </div>
+        <div class="sort-control">
+          <label for="sort">Ordenar por</label>
+          <select id="sort">
+            <option>Popularidad</option>
+            <option>Precio: menor a mayor</option>
+            <option>Precio: mayor a menor</option>
+            <option>Mejor calificación</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="container shop-layout">
+        <aside class="filters-panel">
+          <div class="filter-card">
+            <h3>Filtros</h3>
+            <div class="filter-row">
+              <div class="filter-group">
+                <h4>Categoría</h4>
+                <label><input type="checkbox" name="filter-category" value="Hombres"> Hombres</label>
+                <label><input type="checkbox" name="filter-category" value="Mujeres"> Mujeres</label>
+                <label><input type="checkbox" name="filter-category" value="Niños"> Niños</label>
+              </div>
+              <div class="filter-group">
+                <h4>Enfoque</h4>
+                <label><input type="checkbox" name="filter-focus" value="Running"> Running</label>
+                <label><input type="checkbox" name="filter-focus" value="Trail"> Trail</label>
+                <label><input type="checkbox" name="filter-focus" value="Entrenamiento"> Entrenamiento</label>
+                <label><input type="checkbox" name="filter-focus" value="Casual"> Casual</label>
+              </div>
+            </div>
+            <div class="filter-group">
+              <h4>Talla</h4>
+              <div class="size-grid">
+                <button type="button">24</button>
+                <button type="button">25</button>
+                <button type="button">26</button>
+                <button type="button">27</button>
+                <button type="button">36</button>
+                <button type="button">37</button>
+                <button type="button">38</button>
+                <button type="button">39</button>
+                <button type="button">40</button>
+                <button type="button">41</button>
+                <button type="button">42</button>
+                <button type="button">43</button>
+              </div>
+            </div>
+            <div class="filter-group">
+              <h4>Precio</h4>
+              <div class="price-inputs">
+                <div class="price-field">
+                  <label for="price-min">Mínimo</label>
+                  <input type="number" id="price-min" min="0" placeholder="80">
+                </div>
+                <div class="price-field">
+                  <label for="price-max">Máximo</label>
+                  <input type="number" id="price-max" min="0" placeholder="220">
+                </div>
+              </div>
+            </div>
+            <div class="filter-actions">
+              <button type="button" id="apply-filters" class="button button--primary">Aplicar</button>
+              <button type="button" id="clear-filters" class="button button--clear" disabled>Borrar</button>
+            </div>
+          </div>
+        </aside>
+
+        <section class="product-listing">
+          <div class="product-grid product-grid--wide">
+            <a class="product-card product-card--list" href="productos/roadstride-casual.jsp" data-category="Hombres" data-focus="Casual" data-price="120" data-sizes="37,38,40,41,42" data-stock="37:5,38:3,39:0,40:2,41:2,42:1">
+              <img src="img/zapatos/hombre/hombreCasual1.jpg" alt="Roadstride Casual" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Casual</span>
+                <h3>Roadstride Casual</h3>
+                <p class="rating">★★★★☆ <span>4.5</span></p>
+                <p class="price">$120</p>
+              </div>
+            </a>
+            <a class="product-card product-card--list" href="productos/sprintflow.jsp" data-category="Hombres" data-focus="Running" data-price="145" data-sizes="37,38,40,41,42" data-stock="37:4,38:5,39:0,40:2,41:1,42:1">
+              <img src="img/zapatos/hombre/hombreRunning1.png" alt="Sprintflow" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Running</span>
+                <h3>Sprintflow</h3>
+                <p class="rating">★★★★☆ <span>4.8</span></p>
+                <p class="price">$145</p>
+              </div>
+            </a>
+            <a class="product-card product-card--list" href="productos/terragip-trail.jsp" data-category="Hombres" data-focus="Trail" data-price="138" data-sizes="38,39,40,41,42" data-stock="37:0,38:2,39:3,40:1,41:2,42:1">
+              <img src="img/zapatos/hombre/hombreTrail1.png" alt="TerraGrip Trail" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Trail</span>
+                <h3>TerraGrip Trail</h3>
+                <p class="rating">★★★★☆ <span>4.7</span></p>
+                <p class="price">$138</p>
+              </div>
+            </a>
+            <a class="product-card product-card--list" href="productos/aurora-run.jsp" data-category="Mujeres" data-focus="Running" data-price="150" data-sizes="36,38,39" data-stock="36:5,37:0,38:4,39:2">
+              <img src="img/zapatos/mujer/mujerRunning1.png" alt="Aurora Run" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Running</span>
+                <h3>Aurora Run</h3>
+                <p class="rating">★★★★★ <span>4.9</span></p>
+                <p class="price">$150</p>
+              </div>
+            </a>
+            <a class="product-card product-card--list" href="productos/pulse-fit.jsp" data-category="Mujeres" data-focus="Entrenamiento" data-price="138" data-sizes="36,37,39" data-stock="36:4,37:5,38:0,39:2">
+              <img src="img/zapatos/mujer/mujerEntrenamiento1.png" alt="Pulse Fit" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Entrenamiento</span>
+                <h3>Pulse Fit</h3>
+                <p class="rating">★★★★☆ <span>4.6</span></p>
+                <p class="price">$138</p>
+              </div>
+            </a>
+            <a class="product-card product-card--list" href="productos/nova-court.jsp" data-category="Mujeres" data-focus="Casual" data-price="125" data-sizes="36,38,39" data-stock="36:4,37:0,38:3,39:2">
+              <img src="img/zapatos/mujer/mujerCasual2.png" alt="Nova Court" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Casual</span>
+                <h3>Nova Court</h3>
+                <p class="rating">★★★★☆ <span>4.5</span></p>
+                <p class="price">$125</p>
+              </div>
+            </a>
+            <a class="product-card product-card--list" href="productos/bloomstride.jsp" data-category="Mujeres" data-focus="Casual" data-price="132" data-sizes="36,37,39" data-stock="36:5,37:3,38:0,39:2">
+              <img src="img/zapatos/mujer/mujerCasual1.jpg" alt="Bloomstride" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Casual</span>
+                <h3>Bloomstride</h3>
+                <p class="rating">★★★★☆ <span>4.6</span></p>
+                <p class="price">$132</p>
+              </div>
+            </a>
+            <a class="product-card product-card--list" href="productos/mini-sprint.jsp" data-category="Niños" data-focus="Running" data-price="68" data-sizes="24,25" data-stock="24:4,25:3,26:0,27:0">
+              <img src="img/zapatos/infantil/nino1.jpg" alt="Mini Sprint" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Running</span>
+                <h3>Mini Sprint</h3>
+                <p class="rating">★★★★☆ <span>4.3</span></p>
+                <p class="price">$68</p>
+              </div>
+            </a>
+            <a class="product-card product-card--list" href="productos/tiny-trail.jsp" data-category="Niños" data-focus="Trail" data-price="75" data-sizes="24,26" data-stock="24:2,25:0,26:3,27:0">
+              <img src="img/zapatos/infantil/nino2.png" alt="Tiny Trail" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Trail</span>
+                <h3>Tiny Trail</h3>
+                <p class="rating">★★★★☆ <span>4.7</span></p>
+                <p class="price">$75</p>
+              </div>
+            </a>
+            <a class="product-card product-card--list" href="productos/star-lite.jsp" data-category="Niños" data-focus="Casual" data-price="70" data-sizes="25,26" data-stock="24:0,25:2,26:1,27:0">
+              <img src="img/zapatos/infantil/nina1.png" alt="Star Lite" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Casual</span>
+                <h3>Star Lite</h3>
+                <p class="rating">★★★★☆ <span>4.4</span></p>
+                <p class="price">$70</p>
+              </div>
+            </a>
+            <a class="product-card product-card--list" href="productos/pink-spark.jsp" data-category="Niños" data-focus="Casual" data-price="72" data-sizes="24,27" data-stock="24:2,25:0,26:0,27:3">
+              <img src="img/zapatos/infantil/nina2.png" alt="Pink Spark" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Casual</span>
+                <h3>Pink Spark</h3>
+                <p class="rating">★★★★☆ <span>4.5</span></p>
+                <p class="price">$72</p>
+              </div>
+            </a>
+            <a class="product-card product-card--list" href="productos/unity-step.jsp" data-category="Unisex" data-focus="Casual" data-price="110" data-sizes="37,39,40" data-stock="36:0,37:2,38:0,39:4,40:1,41:0">
+              <img src="img/zapatos/unisex/unisexCasual1.jpg" alt="Unity Step" loading="lazy">
+              <div class="product-info">
+                <span class="product-category">Unisex</span>
+                <h3>Unity Step</h3>
+                <p class="rating">★★★★☆ <span>4.6</span></p>
+                <p class="price">$110</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-compact">
+    <div class="container footer-grid">
+      <div>
+        <h3>Veltrix</h3>
+        <p>Calzado deportivo diseñado para atletas.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p>hello@veltrixbrand.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
